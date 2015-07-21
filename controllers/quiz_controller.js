@@ -21,8 +21,7 @@ exports.index = function(req, res) {
 		var search = req.query.search.trim();
 		search = search.split(' ').join('%');
 		search ='%' + search + '%';
-		console.log("seach ---->" + search);
-		models.Quiz.findAll({where:["pregunta like ?", search]}).then(function(quizes) {
+		models.Quiz.findAll({where:["pregunta COLLATE UTF8_GENERAL_CI like ?", search]}).then(function(quizes) {
 			res.render('quizes', {quizes: quizes});
 		});
 	} else {
