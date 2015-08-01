@@ -1,7 +1,7 @@
 
 <label for="preg" class="rem">Pregunta:</label>
-<input type="text" id="preg" name="quiz[pregunta]" placeholder="Escriba aquí la pregunta" />
+<input type="text" id="preg" name="quiz[pregunta]" value="<%= quiz.pregunta %>" placeholder="Escriba aquí la pregunta" />
 <label for="resp" class="rem">Respuesta:</label>
-<input type="text" id="resp" name="quiz[respuesta]" placeholder="Escriba aquí la respuesta" />
+<input type="text" id="resp" name="quiz[respuesta]" value="<%= quiz.respuesta %>" placeholder="Escriba aquí la respuesta" />
 <a href="/quizes"><button type="button">Cancelar</button></a>
 <input type="submit" value="Salvar">
