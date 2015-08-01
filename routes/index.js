@@ -4,7 +4,7 @@ var router = express.Router();
 var quizController = require('../controllers/quiz_controller');
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Quiz' });
+  res.render('index', { title: 'Quiz', errors: []});
 });
 
 router.param('quizId', quizController.load); //autoload :quizId
