@@ -22,7 +22,7 @@ exports.index = function(req, res) {
 		search = search.split(' ').join('%');
 		search ='%' + search + '%';
 		models.Quiz.findAll({where:["pregunta like ?", search]}).then(function(quizes) {
-			res.render('quizes', {quizes: quizes});
+			res.render('quizes', {quizes: quizes, errors: []});
 		});
 	} else {
 		models.Quiz.findAll().then(
