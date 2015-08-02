@@ -30,6 +30,19 @@ app.use(methodOverride('_method'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(function(req, res, next) {
+    var timeOut = 1*60*1000; //Dos minutos
+    if (req.session.user) {
+        if (Date.now() - req.session.user.accessTime > timeOut) {
+            delete req.session.user;
+        } else {
+            req.session.user.accessTime = Date.now();
+        }
+    }
+  next();
+});
+
+
 // Helpers dinámicos:
 app.use(function(req, res, next) {
 
