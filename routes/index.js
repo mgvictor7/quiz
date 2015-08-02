@@ -30,6 +30,7 @@ router.post('/quizes/create', sessionController.loginRequired, quizController.cr
 router.get('/quizes/:quizId(\\d+)/edit', sessionController.loginRequired, quizController.edit);
 router.put('/quizes/:quizId(\\d+)', sessionController.loginRequired, quizController.update);
 router.delete('/quizes/:quizId(\\d+)', sessionController.loginRequired, quizController.destroy);
+router.get('/quizes/statistics', sessionController.loginRequired, quizController.statistics);
 
 // Rutas para los comentarios
 router.get('/quizes/:quizId(\\d+)/comments/new', commentController.new);

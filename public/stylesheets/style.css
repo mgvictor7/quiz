@@ -16,3 +16,7 @@ nav span             { margin: 0px 10px 0px 0px;
 .right 				 {float: right;}
 
 .quiz_img 			 { height: 150px; float: left;}
+
+.statistics li {
+	list-style: none;
+}

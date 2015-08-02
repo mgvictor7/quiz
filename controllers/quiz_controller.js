@@ -126,3 +126,31 @@ exports.destroy = function(req, res) {
 		next(error);
 	});
 };
+
+exports.statistics = function(req, res) {
+	models.Quiz.findAll({
+		include: [{ model: models.Comment }]
+	}).then(function(quizes) {
+		var nQuizes = quizes.length;
+		var nComments = 0;
+		var quizesWithComments = 0;
+		var quizesWithoutComments = 0;
+		for (var i = 0; i < quizes.length; i++) {
+			if (quizes[i].Comments === undefined || quizes[i].Comments.length === 0) {
+				quizesWithoutComments++;
+			} else {
+				quizesWithComments++;
+				nComments+= quizes[i].Comments.length;	
+			}
+		}
+		var meanCommentsForQuiz = nComments/nQuizes;
+		var result = {
+			nQuizes: nQuizes,
+			nComments: nComments,
+			quizesWithComments: quizesWithComments,
+			quizesWithoutComments: quizesWithoutComments,
+			meanCommentsForQuiz: meanCommentsForQuiz
+		}
+		res.render('quizes/statistics', {result: result, errors: []});
+	});
+};
